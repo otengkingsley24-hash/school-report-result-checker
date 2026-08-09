@@ -4,8 +4,12 @@ import pandas as pd
 
 app = FastAPI()
 
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILE_PATH = os.path.join(BASE_DIR, "students.xlsx")
+
 try:
-    df = pd.read_excel("students.xlsx")
+    df = pd.read_excel(FILE_PATH)
     df.columns = df.columns.str.strip()
 except:
     df = pd.DataFrame()
